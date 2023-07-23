@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Card Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    
+    .card-container {
+      width: 200px;
+      height: 300px;
+      perspective: 800px;
+    }
+    
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    
+    .card-front, .card-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-front {
+      background-color: #f7b731;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #fff;
+    }
+    
+    .card-back {
+      background-color: #eb3b5a;
+        display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container" onclick="flipCard()">
+    <div class="card">
+      <div class="card-front">Front</div>
+      <div class="card-back">Back</div>
+    </div>
+  </div>
+
+  <script>
+    let flipped = false;
+
+    function flipCard() {
+      const card = document.querySelector('.card');
+      flipped = !flipped;
+      card.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0)';
+    }
+  </script>
+</body>
+</html>
